@@ -12,7 +12,7 @@ var height = 350;
 
 d3.json(url, function(data){
 
-var yearData = data.data.monthlyVariance.map(function(d){
+var yearData = data.monthlyVariance.map(function(d){
   return d.year;
 })
 
@@ -32,8 +32,8 @@ var filterYears = function(d){
 var filteredYearData = yearData.filter(filterYears);
 
 
-var MapColumns = 12;
-var MapRows = filteredYearData.length;
+var MapColumns = filteredYearData.length;
+var MapRows = 12;
 
 var hexRadius = d3.min([width/((MapColumns + 0.5) * Math.sqrt(3)),
    height/((MapRows + 1/3) * 1.5)]);
