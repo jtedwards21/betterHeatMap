@@ -4,20 +4,25 @@
 <link rel="stylesheet" href="public/dist/css/main.css">
 </head>
 <body>
-<div id="box">
+<div id="title-box">
   <div class="graph-title">
-  GDP by Quarter
+  Monthly Global Land-Surface Temperature
   </div>
   <div class="graph-subtitle">
-  1999-2001
+  1753-2015
   </div>
   <div class="details">
-  Figures are reported in millions of dollars
+    <span>Temperatures are in Celsius and reported as anomalies relative to the Jan 1951-Dec 1980 average.</span>
+    <span>Estimated Jan 1951-Dec 1980 absolute temperature C: 8.66 +/- 0.07</span>
   </div>
-　　<svg id="chart">
-  </svg>
+</div>
+<div class="box-container">
+  <div id="box">
+　　  <svg id="chart"></svg>
+  </div>
 </div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="public/js/jquery-3.1.1.min.js"></script>
 <script src="public/js/hexbin.min.js"></script>
 <script src="/controllers/index.js"></script>
 </body>

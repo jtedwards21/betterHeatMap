@@ -1,6 +1,11 @@
 var url = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json"
 
+d3.select("#title-box").style("width","100%")
+
 var colors = ["#5e4fa2", "#3288bd", "#66c2a5", "#abdda4", "#e6f598", "#ffffbf", "#fee08b", "#fdae61", "#f46d43", "#d53e4f", "#9e0142"];
+
+var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 
 var buckets = colors.length;
 
@@ -11,8 +16,8 @@ var margin = {
   left: 50
 }
 
-var width = 850;
-var height = 4050;
+var width = 600;
+var height = 10000;
 
 d3.json(url, function(data){
 
@@ -62,7 +67,7 @@ var hexRadius = d3.min([width/((MapColumns + 0.5) * Math.sqrt(3)),
 var points = [];
 for(var i = 0; i < MapRows; i++) {
   for (var j = 0; j < MapColumns; j++) {
-    points.push([hexRadius * j * 1.75, hexRadius * i * 1.5]);
+    points.push([hexRadius * j * 1.75 + 50, hexRadius * i * 1.5 + 50]);
   }//for j
 }//for i
 
@@ -94,6 +99,10 @@ var hexbin = d3_hexbin.hexbin();
 
 hexbin.radius(hexRadius);
 
+var div = d3.select("#box").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 chart.append("g")
     .selectAll(".hexagon")
     .data(hexbin(points))
@@ -107,7 +116,21 @@ chart.append("g")
     .style("fill", function(d, i){
 	console.log(i);
 	return colorScale(newData[i].variance + baseTemp);
-});
+}).on("mouseover", function(d) {
+      div.transition()
+        .duration(100)
+        .style("opacity", 0.8);
+      div.html("<span class='year'>" + newData[i].year + " - " + month[newData[i].month - 1] + "</span><br>" +
+          "<span class='temperature'>" + (Math.floor((newData[i].variance + baseTemp) * 1000) / 1000) + " &#8451" + "</span><br>" +
+          "<span class='variance'>" + newData[i].variance + " &#8451" + "</span>")
+        .style("left", (d3.event.pageX - ($('.tooltip').width()/2)) + "px")
+        .style("top", (d3.event.pageY - 75) + "px");
+    })
+    .on("mouseout", function(d) {
+      div.transition()
+        .duration(200)
+        .style("opacity", 0);
+    });
 
 
 })
