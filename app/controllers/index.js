@@ -116,7 +116,7 @@ chart.append("g")
     .style("fill", function(d, i){
 	console.log(i);
 	return colorScale(newData[i].variance + baseTemp);
-}).on("mouseover", function(d) {
+}).on("mouseover", function(d, i) {
       div.transition()
         .duration(100)
         .style("opacity", 0.8);

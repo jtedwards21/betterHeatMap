@@ -9,7 +9,7 @@ body {
 　　width: 100%;
   position: fixed;
   margin: 0;
-  background-color: white;
+  background-color: #FFFFC0;
   margin-left: auto;
   margin-right: auto;
   z-index: 3;
@@ -22,7 +22,7 @@ body {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 0px;
-  color: #333;
+  color: #555;
 }
 
 .graph-subtitle {
@@ -43,10 +43,15 @@ body {
 }
 
 .box-container {
-  background-color: red;
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d9efff+0,bae2ff+21,a5d9ff+44,82caff+63,6bc1ff+83,5ebcff+100 */
+background: #d9efff; /* Old browsers */
+background: -moz-linear-gradient(top, #d9efff 0%, #bae2ff 21%, #a5d9ff 44%, #82caff 63%, #6bc1ff 83%, #5ebcff 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #d9efff 0%,#bae2ff 21%,#a5d9ff 44%,#82caff 63%,#6bc1ff 83%,#5ebcff 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #d9efff 0%,#bae2ff 21%,#a5d9ff 44%,#82caff 63%,#6bc1ff 83%,#5ebcff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9efff', endColorstr='#5ebcff',GradientType=0 ); /* IE6-9 */
 }
 
 #chart {
